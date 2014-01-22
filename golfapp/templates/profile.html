@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head>
+
+    <title>Golfmeet: Dashboard</title>
+
+    <!-- stylesheets -->
+    <link href="{% static 'assets/stylesheets/dashboard.css' %}" type="text/css" media="screen" rel="stylesheet">
+    <link href="{% static 'assets/stylesheets/profile.css' %}" type="text/css" media="screen" rel="stylesheet">
+
+</head>
+
+
+<body>
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+        
+          <a class="navbar-brand" href="/">
+            <img src="{% static 'assets/images/Golfmeet-logo5.png' %}" height="50px">
+          </a>
+          
+          <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" width="30px" ></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">About Golfmeet</a></li>
+                        <li class="divider"></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="/logout/">Logout</a></li>
+                        {% else %}
+                      
+                        {% endif %} 
+                    </ul>    
+                </li>
+                <li class="form-group search-form">  
+                      <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                </li>
+          </ul>
+        </div>
+      </div>
+    <form method="POST" action="">
+    {% csrf_token %}
+    <div class="container">
+      <div class="row">
+            <div class="col-md-6 column">
+                    <div class="col-md-6  profileLeftBox">
+                        <h4>Profile Form</h4>
+                            <div class="container profileForm">
+                                 <div class="row">
+                                    <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="170px">
+                                    <div class="column">
+                                        <div class="form-group">
+                                            {{ form.first_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.last_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.location }}                                          
+                                        </div>
+                                        <div class="form-group">
+                                            Gender: {{ form.gender }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.birth_date }}
+                                            <p class="formDescription">Birthdate</p>
+                                        </div>
+                                        <div class="form-group">
+                                            Skill Level: {{ form.skill_level }}
+                                        </div>
+                                        <div class="form-group">
+                                            Handicap: {{ form.handicap }}
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                        <a href="" class="saveIcon"><span class="glyphicon glyphicon-check"></span></a>
+                  </div>
+
+                
+                  <div class="col-md-6  profileLeftBox">
+                      <h4>Professional Background</h4>
+                        <div class="experienceForm">
+
+                            <div class="form-group">
+                              {{ form.industry }}
+                            </div>
+                            <div class="form-group">
+                              {{ form.company }}
+                            </div>
+                            <div class="form-group">
+                              {{ form.occupation }}
+                            </div>
+                            <div class="form-group">
+                              {{ form.website }}
+                            </div>
+                            </div>
+                          <a href="" class="saveIcon"><span class="glyphicon glyphicon-check"></span></a>
+                        </div>
+                                             
+                      
+                  </div>
+
+            </div>
+
+            <div class="col-md-6 column rightBox">
+
+                <div class="col-md-6 photoBox">
+                    <h4>Photos</h4>
+                    {{ form.photo }}
+                    <p><a class="addIcon"><span class="glyphicon glyphicon-plus "></span></a><span class="addPopUp">Add Photo</span></p>
+
+                    <p class="instructions">Your Photo Box is empty. Click the plus sign to upload your first photo. </p>
+                </div>
+
+                <div class="col-md-6 videosBox">
+                    <h4>Videos</h4>
+                    <p><a class="addIcon"><span class="glyphicon glyphicon-plus "></span></a><span class="addPopUp">Add Video</span></p>
+                    <p class="instructions">Your Video Box is empty. Click the plus sign to upload your first photo. </p>
+
+                </div>
+
+                <div class="col-md-6 golfBagBox">
+                    <h4>My Gear</h4>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+      <div id="submit">
+      <input id="submit" type="submit" value="Update" />
+      </div>
+    </form>
+
+
+    <footer>
+        <div class="container">
+        <!--  <ul class="navbar-text">
+          <li>About</li>
+          <li>Contact</li>
+          <li>Privacy Policy</li>
+          <li>Terms and Conditions</li>
+        </ul> -->
+        <p> &copy; Golfmeet. All Rights Reserved 2013.</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="{% static 'assets/js/profile.js' %}"></script>
+{% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+    

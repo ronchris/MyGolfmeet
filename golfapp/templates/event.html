@@ -1,0 +1,13 @@
+{% if is_attending %} 
+     <button class="btn"> # this code will executes when is_attending is True
+         <i class="icon-ok-sign"></i> Attending
+     </button>
+{% else %}
+     <form class="left" method="POST" action="/event/{{ event.id }}/"> # Always user reverse urls instead of Hard coded
+     {% csrf_token %}
+          <input type="hidden" name="dashboard_id" value="{{dashboard.id}}" />
+          <button class="btn">
+               Attending
+          </button>
+     </form>
+{% endif %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head>
+    <title>Golfmeet</title>
+    <link href="{% static 'assets/stylesheets/login.css' %}" type="text/css" media="screen" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'assets/js/login.js' %}"></script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'assets/images/Golfmeet-logo5.png' %}" height="45px">
+        </a>
+        <a class="btn btn-default navbar-btn navbar-right signUpButton" href="../signup">Sign Up</a>
+      </div>
+    </nav>
+
+    <div class="loginBackgroundImage">
+        <div class="container">
+              <div id="data-dashboard" class="loginFormBox">
+{#                <h3>Ready. Set. Golfmeet!</h3>#}
+                <form method="POST" action="">
+                {% csrf_token %}
+                    <div class="form-group loginForm first">
+                        {{ LoginForm.username }}
+                    </div>
+                    <div class="form-group loginForm passwordForm">
+                        {{ LoginForm.password }}
+                    <p id="incorrect">Username or password is incorrect.</p>
+                    </div>
+                    <p class="formDescription"><a href="">Password Reset</a></p>
+                    <input type="submit" value="Login" class="btn btn-default login"/>
+                </form>
+              </div>
+
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}
+</html>

@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head>
+
+    <title>Golfmeet: Dashboard</title>
+
+    <!-- stylesheets -->
+    <link href="{% static 'assets/stylesheets/dashboard.css' %}" type="text/css" media="screen" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'assets/images/Golfmeet-logo5.png' %}" height="50px">
+        </a>
+        
+        <ul class="nav navbar-nav navbar-right">
+             <li id="welcome">Welcome, {{ dashboard_user }}!</li>
+             <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" width="30px" ></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">About Golfmeet</a></li>
+                        <li class="divider"></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="/logout/">Logout</a></li>
+                        {% else %}
+                      
+                        {% endif %} 
+                    </ul>    
+            </li>
+            <li class="form-group search-form">  
+                  <form action="/search/" method="get">
+                    <input id="id_q" name="q" type="text" placeholder=" Search">
+                    <input type="submit" value="Submit" class="btn btn-default btn-sm">
+                    <!-- <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"> -->
+                  </form>
+            </li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <div class="container">
+        <div class="row bodyBox">
+            <div class="col-md-9 golfMeeterBox">
+                <a href="" class="filterLink"><span class="glyphicon glyphicon-list"></span></a>
+                <div class="boxIcon">
+                    <h5><span><img src="{% static 'assets/images/golfMeetersIcon.png' %}" width="30px"></span>
+                   GOLFMEETERS</h5>
+                </div>
+                <div class="scrollie">
+                    <div>
+                    </div>
+                    <table class="golfmeeterInfoBox">
+                        <tr>
+                            {% for user in users %}
+                             <td>
+                              <a href="">
+                              <ul>
+                                <li><img src="{% static 'assets/images/profileImageIcon.png' %}" title= "Invite to play!" alt="Profile Image" class="img-thumbnail" >
+                               </li>
+                                    <li class="golfers" id="profileName">{{  user.username }}</li>
+<!--                                <li class="golfers">{{  userinfo.skill_level }}, {{  userinfo.gender }}</li>
+                                    <li class="golfers">{{  userinfo.location }}</li> -->
+                              </ul>
+                              </a>
+                             </td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3 createEventBox">
+                <div class="mapMarkerIcon">
+                   <a href="/map/"><span class="glyphicon glyphicon-map-marker"></span></a>
+                </div>
+
+               
+
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 profileBox">
+                <a href="/dashboard/profile/">
+                    <div class="profileBoxIcon">
+                        <h5><span><img src="{% static 'assets/images/profileIcon.png' %}" width="30px"></span>
+                        PROFILE</h5>
+                    </div>
+                    <a href="/dashboard/profile/profile_view/"><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="170px"></a>
+                      <ul id="profileBoxInformation">
+                      <li><span id="profileName"> {{ dashboard_user }}</span></li>
+                      <li> {{ dashboard_user.userinfo.skill_level }} </li>
+                      <li> {{ dashboard_user.userinfo.location }}</li>
+                      </ul>
+                </a>
+
+      <div class=" progressBox"><div class="boxIcon">
+        <a href="tracker">
+        <h5><span><img src="{% static 'assets/images/trackerIcon.png' %}" width="30px"></span>
+        TRACKER</h5>
+        </a>
+        <img src="{% static 'assets/images/score.jpg' %}" width="250px" height="150px">
+      </div></div>
+      <div class="dealsBox"><div class="boxIcon">
+        <h5><span><img src="{% static 'assets/images/dealsIcon.png' %}" width="30px"></span>
+        DEALS</h5>
+        <a href="http://www.groupon.com/browse/san-francisco?lat=37.7749295&lng=-122.41941550000001&address=San+Francisco,+CA,+USA&query=golf&locale=en_US"><img src="{% static 'assets/images/groupon1.jpg' %}" width="250px" height="200px"></a>
+      </div></div>
+    </div>
+       <div class="col-md-6 activitiesBox">
+        <div id="">
+            <h3 id="activitiesWall">Activities Wall</h3>
+            <form>
+                  <input type="text" rows="2" class="form-control">
+                  <div id="shareButtonArea">
+
+                    <a href=""><span class="glyphicon glyphicon-picture"></span></a>
+                    <a href=""><span class="glyphicon glyphicon-map-marker"></span></a>
+                    <a href=""><span class="glyphicon glyphicon-tags "></span></a>
+                    <button type="button" class="btn btn-default">Share</button>
+
+                  </div>
+            </form>
+        </div>
+        <div id="postingBox">
+           <div class="row">
+              <div id="postArea">
+
+                  <div class="col-md-3">
+                    <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" width="50px" >
+                  </div>
+                   <div class="col-md-9">
+                    <div class="mainPostBox">
+                    <h5 id="namePost">Nina's Post</h5>
+                    <p id="postDate" datetime="">11/23/13, 3pm</p>
+                    <img src="{% static 'assets/images/golfmeet-icon.png' %}" alt="Profile Image" width="100%" >
+                    <p id="postDescription"> nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                   </div>
+                  </div>
+                </div>
+                <div id="postArea">
+                  <div class="col-md-3">
+                    <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" width="50px" >
+                  </div>
+                  <div class="col-md-9">
+                    <div class="mainPostBox">
+                    <h5 id="namePost">Ronald's Post</h5>
+                    <p id="postDate" datetime="">11/24/13, 2:15pm</p>
+                     <p>MySQL is a popular open source database that you may want to install locally to make sure that it behaves the same as your production instance of MySQL (if that’s what you’re running). Rails abstracts a lot of the different database differences to your app, but you still may want to actually run MySQL just to have the added confidence that there aren’t any subtle quirks/differences.</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+    </div>
+    <div class="col-md-3 calendarBox"><div class="boxIcon">
+        <h5><span><img src="{% static 'assets/images/calendarIcon.png' %}" width="30px"></span>
+        EVENTS</h5>
+        <table class="calendarTable">
+          <thead>
+            <tr class="trHeader">
+              <td>M</td><td>T</td><td>W</td><td>Th</td><td>F</td>
+
+              <td>S</td>
+
+              <td>Sn</td>
+            </tr>
+          </thead>
+            <tr>
+              <td></td>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+              <td>13</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>22</td>
+              <td>23</td>
+              <td>24</td>
+              <td>25</td>
+              <td>26</td>
+              <td>27</td>
+            </tr>
+            <tr>
+              <td>28</td>
+              <td>29</td>
+              <td>30</td>
+              <td>31</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+        </table>
+        <div class="eventBox">
+          <div class="listIcon">
+            <a href=""><span class="glyphicon glyphicon-list"></span></a>
+          </div>
+              <h5>Upcoming Events</h5>
+
+              <div class="foursomeBox">
+              {% for event in events %}
+                <ul>
+                  <li>{{ event.date }}</li>
+                  <li>{{ event.location }}</li>
+                  <li>{{ event.time }}</li>
+                  <li>
+              {% endfor %}
+                    <ul class="row">
+                      <li><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="50px"></li>
+                      <li><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="50px"></li>
+                      <li><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="50px"></li>
+                      <li><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="50px"></li>
+
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+        </div>
+        
+      </div>
+      
+    </div>
+    </div>
+
+      
+    </div>
+
+
+
+    <footer>
+    <div class="container">
+    <!--  <ul class="navbar-text">
+      <li>About</li>
+      <li>Contact</li>
+      <li>Privacy Policy</li>
+      <li>Terms and Conditions</li>
+    </ul> -->
+    <p> &copy; Golfmeet. All Rights Reserved 2013.</p>
+
+    </div>
+
+
+    <!-- Modal -->
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" area-hidden="true">×</button>
+		        <h4 class="modal-title" id="myModalLabel">Schedule a Golfmeeting!</h4>
+		      </div>
+		      <div class="modal-body">
+
+            <form method="POST" action="">
+              {% csrf_token %}
+                <br>
+                <p><strong>Host: {{ dashboard_user }} </strong></p>
+
+                <p>Date:</p>
+                {{ form.date }}
+				        <!-- <input class="form-control" type="date"><br> -->
+                <p>Place:</p>
+                {{ form.course }}
+				        <!-- <select>
+                 <option value="Harding Park">Harding Park</option>
+                 <option value="Lincoln Park">Lincoln Park</option>
+                </select> -->
+                <br><br>
+                <p>Time:</p>
+                {{ form.time }}
+                <!-- <input class="form-control" type="time"><br><br> -->
+                <br><br>
+                Invitees:
+                 <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="60px"></li>
+                 <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="60px"></li>
+                 <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="60px"></li>
+                 <img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="60px"></li>
+		          
+                <br><br><br>
+                <input type="submit" value="Submit" class="btn btn-default btn-md" />
+            </form>
+
+          </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		<div>  
+
+    </footer>
+
+{% endblock %}
+</body>
+
+
+
+ </html>

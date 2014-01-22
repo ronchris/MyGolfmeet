@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'assets/stylesheets/tracker.css' %}">
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script type='text/javascript' src="{% static 'assets/js/tracker.js' %}"></script>
+</head>
+
+<body>
+       <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+        
+          <a class="navbar-brand" href="/">
+            <img src="{% static 'assets/images/Golfmeet-logo5.png' %}" height="50px">
+          </a>
+          
+          <ul class="nav navbar-nav navbar-right">
+                <li id="welcome">Welcome, {{ dashboard_user }}!</li>
+                <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" width="30px" ></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">About Golfmeet</a></li>
+                        <li class="divider"></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="/logout/">Logout</a></li>
+                        {% else %}
+                      
+                        {% endif %} 
+                    </ul>    
+                </li>
+                <li class="form-group search-form">  
+                      <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container">
+            <div class="col-md-12 scoreboardBox">
+                <a href="" class="editIcon"><span class="glyphicon glyphicon-edit"></span></a>
+                <h2>Scorecard</h2>
+                <h4>January 2013</h4>
+                <div>
+                    <ul>
+                        <li class="eventTitle">18 Holes</li>
+                        <li class="eventDate">1/4/13</li>
+                        <li class="eventLocation">Cypress Golf, San Francisco,CA</li>
+                    <ul>
+                </div>
+
+                <form>
+                    <table>
+
+                        <thead>
+                                 <td class="tdFirst">Holes</td>
+                                 <td>1</td>
+                                 <td>2</td>
+                                 <td>3</td>
+                                 <td>4</td>
+                                 <td>5</td>
+                                 <td>6</td>
+                                 <td>7</td>
+                                 <td>8</td>
+                                 <td>9</td>
+                                 <td id="out">Out</td>
+                                 <td id="initial">Initial</td>
+                                 <td>10</td>
+                                 <td>11</td>
+                                 <td>12</td>
+                                 <td>13</td>
+                                 <td>14</td>
+                                 <td>15</td>
+                                 <td>16</td>
+                                 <td>17</td>
+                                 <td>18</td>
+                                 <td class="tdLast">Total</td>
+                        </thead>
+
+                        <tbody>
+                            <tr id="parRow">
+                                <td>Par</td>
+                                 <td>5</td>
+                                 <td>5</td>
+                                 <td>3</td>
+                                 <td>5</td>
+                                 <td>4</td>
+                                 <td>4</td>
+                                 <td>3</td>
+                                 <td>3</td>
+                                 <td>4</td>
+                                <td></td>
+                                <td></td>
+                                 <td>4</td>
+                                 <td>3</td>
+                                 <td>5</td>
+                                 <td>4</td>
+                                 <td>4</td>
+                                 <td>5</td>
+                                 <td>3</td>
+                                 <td>4</td>
+                                 <td>5</td>
+                                 <td class="tdLast">73</td>
+                            </tr>
+                             <tr class="scoreRow" id="userscore">
+                                <td>Nina</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                  <td></td>
+                                 <td></td>
+                                 <td class="tdLast"></td>
+                             </tr>
+                             <tr class="scoreRow otherPlayer">
+                                <td>Tiger</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td class="tdLast"></td>
+                            </tr>
+                            <tr class="scoreRow otherPlayer">
+                                <td>Ervie</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                <td></td>
+                                 <td></td>
+                                 <td class="tdLast"></td>
+                            </tr>
+                            <tr class="scoreRow otherPlayer">
+                            <td>Ronald</td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td class="tdLast"></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </form>
+
+
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-8 scorecardBox" id="menu">
+                <strong><p id="archive_title">Most recent scorecards...<p></strong>
+                <div class="archive_link">
+                    <h3>Harding Park | San Francisco, CA | 2013 |</h3>
+                </div>
+                <div class="archive_link">
+                    <h3>Lincoln Park | San Francisco, CA | 2013 |</h3>
+                </div>
+                <div class="archive_link">
+                    <h3>Sneath Lane | San Bruno, CA | 2012 |</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-4 goalsBox">
+                    <h4>Stats</h4>
+                    <br>
+                    <h4>Jan 2013 through Today</h4>
+                    <br>
+                    <p>Aces: 3</p>
+                    <p>Birdies: 106</p>
+                    <p>Eagles: 56</p>
+                    <p>Pars: 178</p>
+                    <p>Bogeys: 112</p>
+                    <p>Double Bogeys: 45</p>
+                    <p>Triple Bogeys: 9</p>
+                    <p>Quadruple Bogey: 2</p>
+                    <p>Double Par: 5</p>
+                </div>
+            </div>
+            <div class="col-md-12 graphBox">
+                <h4>Progress Tracker</h4>
+                <img src="{% static 'assets/images/golf.gif' %}">
+            </div>
+
+      </div>
+
+      <footer>
+            <div class="container">
+             <!--  <ul class="navbar-text">
+                <li>About</li>
+                <li>Contact</li>
+                <li>Privacy Policy</li>
+                <li>Terms and Conditions</li>
+              </ul> -->
+              <p> &copy; Golfmeet. All Rights Reserved 2013.</p>
+            </div>
+      </footer>
+
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/scores.js"></script>
+
+{% endblock %}
+</body>
+
+</html>
+
+
+{
+{##}
+{#<br>#}
+{#<br>#}
+{##}
+{#<table>#}
+{#  <thead>#}
+{#    <tr>#}
+{#      <th class="title" colspan="20">Score Form</th>#}
+{#    </tr>#}
+{#  </thead>#}
+{##}
+{#  <tr>#}
+{#    <th>Holes</th>#}
+{#     <th>1</th>#}
+{#     <th>2</th>#}
+{#     <th>3</th>#}
+{#     <th>4</th>#}
+{#     <th>5</th>#}
+{#     <th>6</th>#}
+{#     <th>7</th>#}
+{#     <th>8</th>#}
+{#     <th>9</th>#}
+{#     <th>10</th>#}
+{#     <th>11</th>#}
+{#     <th>12</th>#}
+{#     <th>13</th>#}
+{#     <th>14</th>#}
+{#     <th>15</th>#}
+{#     <th>16</th>#}
+{#     <th>17</th>#}
+{#     <th>18</th>#}
+{#     <th>Total</th>#}
+{#  </tr>#}
+{#  </thead>#}
+{##}
+{#  <tbody class="body">#}
+{#  <tr id="firstRow">#}
+{#    <td id="cell_0-0">Par</td>#}
+{#  </tr>#}
+{##}
+{#  <tr id="scoreRows">#}
+{#  </tr>#}
+{#  </tbody>#}
+{##}
+{#</table>#}
+{##}
+{#<button id="update">Update Scores</button>#}
+

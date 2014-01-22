@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head>
+
+    <title>Golfmeet: Dashboard</title>
+
+    <!-- stylesheets -->
+    <link href="{% static 'assets/stylesheets/dashboard.css' %}" type="text/css" media="screen" rel="stylesheet">
+    
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'assets/images/Golfmeet-logo5.png' %}" height="45px">
+        </a>
+      <div class="nav navbar-nav navbar-right">
+          <div class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">About Golfmeet</a></li>
+                    <li class="divider"></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/logout/">Logout</a></li>
+                    {% else %}
+                    <!-- <a href="/rango/register/">Register Here</a> -->
+                    <!-- <a href="/rango/login/">Login</a> -->
+                    {% endif %}
+                  </ul>
+          </div>
+          
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="container">
+        <div class="row bodyBox">
+            <div class="col-md-9 golfMeeterBox">
+                <div class="boxIcon">
+                </div>
+            </div>
+            <div class="col-md-3 createEventBox">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 profileBox">
+                <a href="/dashboard/profile/">
+                    <div class="profileBoxIcon">
+                        <h5><span><img src="{% static 'assets/images/profileIcon.png' %}" width="30px"></span>
+                        PROFILE</h5>
+                    </div>
+                    <a href="/dashboard/profile_view/"><img src="{% static 'assets/images/profileImageIcon.png' %}" alt="Profile Image" class="img-thumbnail" width="170px"></a>
+                      <ul id="profileBoxInformation">
+                      </ul>
+                </a>
+
+      <div class=" progressBox"><div class="boxIcon">
+      </div></div>
+      <div class="dealsBox"><div class="boxIcon">
+
+      </div></div>
+    </div>
+    <div class="col-md-6 activitiesBox">
+        <div id="">
+            <h3 id="activitiesWall">Profile Info</h3>
+            <p>Return to <strong><a href="/dashboard/">dashboard</a></strong>.</p>
+            <p>Click to <strong><a href="/dashboard/profile/">edit</a></strong> your profile page.<p>
+            Username:       {{ request.user }}<br>
+            Name:           {{ request.user.userinfo.name }}<br>
+            E-mail:         {{ request.user.userinfo.email }}<br>
+            Birthday:       {{ request.user.userinfo.birth_date }}<br>
+            Gender:         {{ request.user.userinfo.gender }}<br>
+            Skill Level:    {{ request.user.userinfo.skill_level }}<br>
+            Handicap:       {{ request.user.userinfo.handicap }}<br>
+            Location:       {{ request.user.userinfo.location }}<br>
+            About me:       {{ request.user.userinfo.about_me }}<br>
+            Website:        {{ request.user.userinfo.website }}<br>
+    </div>
+             
+        </div>
+        <div id="postingBox">
+           <div class="row">
+              <div id="postArea">
+
+               
+              </div>
+           </div>
+       </div>
+    
+      </div>
+    </div>
+    </div>
+
+    </div>
+
+    
+   <footer>
+    <div class="container">
+    <!--  <ul class="navbar-text">
+      <li>About</li>
+      <li>Contact</li>
+      <li>Privacy Policy</li>
+      <li>Terms and Conditions</li>
+    </ul> -->
+    <p> &copy; Golfmeet. All Rights Reserved 2013.</p>
+    
+
+    </footer>
+
+{% endblock %}
+</body>
+</html>

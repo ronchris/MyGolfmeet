@@ -1,0 +1,134 @@
+{% load staticfiles  %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Golfmeet</title>
+
+    <!-- stylesheets -->
+    <link href="{% static 'assets/stylesheets/bootstrap.css' %}" type="text/css" media="screen" rel="stylesheet">
+    <link href="{% static 'assets/stylesheets/global.css' %}" type="text/css" media="screen" rel="stylesheet">
+    <link href="{% static 'assets/stylesheets/home.css' %}" type="text/css" media="screen" rel="stylesheet">
+
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+      <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'assets/images/Golfmeet-logo5.png' %}" height="45px">
+          </a>
+          <a class="btn btn-default navbar-btn navbar-right" href="login">Log In</a>
+          <a class="btn btn-default navbar-btn navbar-right signUpButton" href="signup">Sign Up</a>
+        </div>
+      </nav>
+
+      <!-- __________________________________________________________________________________________ -->
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="" height="45px">
+        </div>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+      </div>
+      <!-- __________________________________________________________________________________________ -->
+
+    <div class="headerWrap">
+      <div class="container">
+          <h1 class="headerText">Your Social Golf App</h1>
+          <h2 class="subheadText"> Meet other passionate golfers nearby and enjoy a round of golf or hit a few buckets at the range.
+      </div>
+    </div>
+    <div class="aboutWrap">
+      <div class="container">
+          <div class="ulDiv">
+            <div class="col-xs-6 col-md-4 liDiv">
+              <h3 class="aboutWrap-h3">Track</h3>
+              <img src="{% static 'assets/images/trackIcon.png' %}" width="220px">
+              <p>TRACK your scores and iron distances with our dynamic progress charts.</p>
+            </div>
+            <div class="col-xs-6 col-md-4 liDiv">
+              <h3 class="aboutWrap-h3">Meet</h3>
+              <img src="{% static 'assets/images/meetIcon.png' %}" width="220px">
+
+              <p>MEET local passionate golfers and schedule a tee time!</p>
+            </div>
+            <div class="col-xs-6 col-md-4 liDiv">
+              <h3 class="aboutWrap-h3">Play</h3>
+              <img src="{% static 'assets/images/playIcon.png' %}" width="220px">
+              <p>PLAY a round of golf at a nearby course or get lessons at a practice facility. </p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="quoteWrap">
+      <div class="container">
+        <h2 class="quoteWrap-h2">Our mission is to at vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</h2>
+      </div>
+    </div>
+    <div class="featuresWrap">
+      <div class="container">
+        <h5>Enjoy And Explore Awesome Features</h5>
+          <div class="ulDiv row">
+            <div class="col-xs-6 col-sm-3 liDiv"><img src="{% static 'assets/images/scoreCardIcon.png' %}" width="100px" class="featuresImages">
+              <h3>Scorecard</h3>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="col-xs-6 col-sm-3 liDiv"><img src="{% static 'assets/images/calendarIcon.png' %}" width="100px" class="featuresImages">
+              <h3>Calendar</h3>
+              <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates</p>
+            </div>
+            <div class="col-xs-6 col-sm-3 liDiv"><img src="{% static 'assets/images/coursesIcon.png' %}" width="100px" class="featuresImages">
+              <h3>Maps</h3>
+              <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.</p>
+            </div>
+            <div class="col-xs-6 col-sm-3 liDiv"><img src="{% static 'assets/images/dealsIcon.png' %}" width="100px" class="featuresImages">
+              <h3>Deals</h3>
+              <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius.</p>
+            </div>
+          </div>
+      </div>
+    </div>
+      <footer>
+        <div class="container">
+         <!--  <ul class="navbar-text">
+            <li>About</li>
+            <li>Contact</li>
+            <li>Privacy Policy</li>
+            <li>Terms and Conditions</li>
+          </ul> -->
+          <p> &copy; Golfmeet. All Rights Reserved 2013.</p>
+
+        </div>
+
+      </footer>
+
+      <!-- scripts -->
+      <script type="text/javascript" src="{% static 'assets/js/jquery.js' %}"></script>
+      <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'assets/js/dashboard.js' %}"></script>
+
+<body>
+ </html>
